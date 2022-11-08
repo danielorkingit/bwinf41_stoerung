@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /*
- * BWINF-41 "Hüpfburg"
+ * BWINF-41 "Stoerung"
  * Developer: Daniel Orkin
  * Team-ID: 00376
  */
