@@ -1,10 +1,6 @@
 package bwinf_störung;
 
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -19,7 +15,7 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 														
-		Scanner scannerF = new Scanner(Paths.get("book.txt"), StandardCharsets.UTF_8.name());
+		Scanner scannerF = new Scanner(Paths.get(new java.io.File(".").getCanonicalPath() + "/book.txt"));
 		
 		String rawText = scannerF.useDelimiter("\\A").next().replaceAll("[^A-Za-z0-9ßäÄüÜöÖ ]"," ");
 		
@@ -29,11 +25,11 @@ public class Main {
 		 
 		System.out.println("Enter the text-passage. Replace the gaps with a underscore (_).");
 		
-		Scanner scannerI = new Scanner(System.in);
-								
-		String[] passage = scannerI.nextLine().toLowerCase().split("\\s+");
+		try (Scanner scannerI = new Scanner(System.in)) {
+			String[] passage = scannerI.nextLine().toLowerCase().split("\\s+");
 
-		searchPassage(passage, content);
+			searchPassage(passage, content);
+		}
 	}
 	
 	public static boolean searchPassage(String[] passage, String[] text) {
